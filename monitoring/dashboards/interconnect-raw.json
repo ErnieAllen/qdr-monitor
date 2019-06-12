@@ -51,7 +51,6 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 1,
   "links": [],
   "panels": [
     {
@@ -674,7 +673,7 @@
       }
     }
   ],
-  "refresh": "5s",
+  "refresh": " 10s",
   "schemaVersion": 18,
   "style": "dark",
   "tags": [],
@@ -682,13 +681,14 @@
     "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
     "hidden": false,
     "refresh_intervals": [
-      "5s"
+      "5s",
+      " 10s"
     ],
     "time_options": [
       "5m",
@@ -705,5 +705,5 @@
   "timezone": "browser",
   "title": "Qpid Dispatch Router",
   "uid": "Bea_Uoliz",
-  "version": 3
+  "version": 1
 }
