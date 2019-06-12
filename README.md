@@ -72,7 +72,7 @@ $ kubectl expose service/grafana -n myproject
 ```console
 $ kubectl rollout status deployment/grafana -w -n myproject
 ```
-
+#  ... or ...
 All of the above commands are run using the deploy-monitoring script: 
 ```console
 $ ./deploy-monitoring.sh
