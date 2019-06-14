@@ -10,7 +10,7 @@ data:
     - name: interconnect
       rules:
       - alert: DelayedDeliveries
-        expr: deliveriesDelayed10Sec > 1
+        expr: rate(deliveries_delayed_1sec[1m]) > 0
         for: 10s
         labels:
           severity: warning

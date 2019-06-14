@@ -19,9 +19,10 @@ kubectl create configmap grafana-config \
     --from-file=datasource.yaml=$DIR/monitoring/dashboards/datasource.yaml \
     --from-file=grafana-dashboard-provider.yaml=$DIR/monitoring/grafana-dashboard-provider.yaml \
     --from-file=interconnect-dashboard.json=$DIR/monitoring/dashboards/interconnect-raw.json \
+    --from-file=interconnect-dashboard-delayed.json=$DIR/monitoring/dashboards/interconnect-delayed.json \
     -n $NAMESPACE
 
-kubectl label configmap grafana-config app=interconnect
+#kubectl label configmap grafana-config app=interconnect
 
 # Grafana
 kubectl apply -f $DIR/monitoring/grafana.yaml -n $NAMESPACE

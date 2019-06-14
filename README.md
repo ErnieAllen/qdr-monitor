@@ -25,7 +25,7 @@ $ kubectl apply -f mesh-3.yaml
 After the network is available, create a route to the router's console:
 
 ```console
-$ kubectl apply -f expose-interconnect.yaml
+$ kubectl create -f expose-interconnect.yaml
 ```
 
 You should now be able to use the route on the example-interconnect service to view the interconnect console.
@@ -55,6 +55,7 @@ $ kubectl create configmap grafana-config \
     --from-file=datasource.yaml=$DIR/monitoring/dashboards/datasource.yaml \
     --from-file=grafana-dashboard-provider.yaml=$DIR/monitoring/grafana-dashboard-provider.yaml \
     --from-file=interconnect-dashboard.json=$DIR/monitoring/dashboards/interconnect-raw.json \
+    --from-file=interconnect-dashboard-delayed.json=$DIR/monitoring/dashboards/interconnect-delayed.json \
     -n myproject
 
 $ kubectl label configmap grafana-config app=interconnect

@@ -1,5 +1,5 @@
 # This will instruct qdr-operator to create a 3 router mesh
-# $ kubectl apply -f mesh-3.yaml
+# $ kubectl create -f mesh-3.yaml
 apiVersion: interconnectedcloud.github.io/v1alpha1
 kind: Interconnect
 metadata:

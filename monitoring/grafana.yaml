@@ -5,8 +5,6 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: grafana
-  labels:
-    app: interconnect
 spec:
   replicas: 1
   template:
@@ -39,6 +37,10 @@ spec:
           mountPath: /var/lib/grafana/dashboards/interconnect-dashboard.json
           readOnly: true
           subPath: interconnect-dashboard.json
+        - name: grafana-config
+          mountPath: /var/lib/grafana/dashboards/interconnect-dashboard-delayed.json
+          readOnly: true
+          subPath: interconnect-dashboard-delayed.json
         readinessProbe:
           httpGet:
             path: /api/health
@@ -71,8 +73,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: grafana
-  labels:
-    app: interconnect
 spec:
   ports:
   - name: grafana

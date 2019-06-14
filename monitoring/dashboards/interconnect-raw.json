@@ -59,7 +59,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "description": "Number of deliveries that were sent to it by a sender that is directly attached to the router.",
+      "description": "Number of deliveries that were sent to the router by a sender that is directly attached to the router.",
       "fill": 1,
       "gridPos": {
         "h": 8,
@@ -673,7 +673,7 @@
       }
     }
   ],
-  "refresh": " 10s",
+  "refresh": "10s",
   "schemaVersion": 18,
   "style": "dark",
   "tags": [],
@@ -688,7 +688,7 @@
     "hidden": false,
     "refresh_intervals": [
       "5s",
-      " 10s"
+      "10s"
     ],
     "time_options": [
       "5m",
