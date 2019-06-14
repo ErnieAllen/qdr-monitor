@@ -22,6 +22,12 @@ After the qdr-operator is installed, the router network used in this example is 
 $ kubectl apply -f mesh-3.yaml
 ```
 
+Check to ensure the router network is available:
+
+```console
+$ kubectl rollout status deployment/example-interconnect -w -n myproject
+```
+
 After the network is available, create a route to the router's console:
 
 ```console
@@ -31,6 +37,15 @@ $ kubectl create -f expose-interconnect.yaml
 You should now be able to use the route on the example-interconnect service to view the interconnect console.
 
 ## Deploy prometheus / grafana
+
+### 
+All of the commands needed to install prometheus/grafana monitoring are in the deploy-monitoring script: 
+
+```console
+$ ./deploy-monitoring.sh
+```
+
+If you recieve any errors, you can run the individual command separately:
 
 ### Create the prometheus deployment and alertmanager
 
@@ -72,9 +87,4 @@ $ kubectl expose service/grafana -n myproject
 
 ```console
 $ kubectl rollout status deployment/grafana -w -n myproject
-```
-#  ... or ...
-All of the above commands are run using the deploy-monitoring script: 
-```console
-$ ./deploy-monitoring.sh
 ```
