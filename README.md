@@ -28,14 +28,6 @@ Check to ensure the router network is available:
 $ kubectl rollout status deployment/example-interconnect -w -n myproject
 ```
 
-After the network is available, create a route to the router's console:
-
-```console
-$ kubectl create -f expose-interconnect.yaml
-```
-
-You should now be able to use the route on the example-interconnect service to view the interconnect console.
-
 ## Deploy prometheus / grafana
 
 ### 
@@ -53,7 +45,6 @@ If you recieve any errors, you can run the individual command separately:
 $ kubectl apply -f $DIR/monitoring/alerting-interconnect.yaml -n myproject
 $ kubectl apply -f $DIR/monitoring/prometheus.yaml -n myproject
 $ kubectl apply -f $DIR/monitoring/alertmanager.yaml -n myproject
-$ kubectl expose service/prometheus -n myproject
 ```
 
 ### Wait for Prometheus server to be ready
@@ -61,6 +52,8 @@ $ kubectl expose service/prometheus -n myproject
 ```console
 $ kubectl rollout status deployment/prometheus -w -n myproject
 $ kubectl rollout status deployment/alertmanager -w -n myproject
+$ kubectl create -f $DIR/monitoring/route-alertmanager.yaml -n $NAMESPACE
+$ kubectl create -f $DIR/monitoring/route-prometheus.yaml -n $NAMESPACE
 ```
 
 ### Prepare Grafana datasource and dashboards
@@ -73,18 +66,17 @@ $ kubectl create configmap grafana-config \
     --from-file=interconnect-dashboard-delayed.json=$DIR/monitoring/dashboards/interconnect-delayed.json \
     -n myproject
 
-$ kubectl label configmap grafana-config app=interconnect
 ```
 
 ### Deploy grafana
 
 ```console
 $ kubectl apply -f $DIR/monitoring/grafana.yaml -n myproject
-$ kubectl expose service/grafana -n myproject
 ```
 
 ### Wait for Grafana server to be ready
 
 ```console
 $ kubectl rollout status deployment/grafana -w -n myproject
+$ kubectl create -f $DIR/monitoring/route-grafana.yaml -n $NAMESPACE
 ```

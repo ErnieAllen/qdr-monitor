@@ -16,4 +16,4 @@ data:
           severity: warning
         annotations:
           summary: 'There are delayed deliveries'
-          description: 'There are {{ $value }} delayed deliveries'
+          description: 'There are deliveries that are not being accepted within 1 sec after they are sent. To view which receiver client is involved, display the interconnect console's overview page.'
