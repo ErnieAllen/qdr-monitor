@@ -10,6 +10,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 kubectl apply -f $DIR/monitoring/alerting-interconnect.yaml -n $NAMESPACE
 kubectl apply -f $DIR/monitoring/prometheus.yaml -n $NAMESPACE
 kubectl apply -f $DIR/monitoring/alertmanager.yaml -n $NAMESPACE
+kubectl expose service/prometheus -n $NAMESPACE
 
 echo "Waiting for Prometheus server to be ready..."
 kubectl rollout status deployment/prometheus -w -n $NAMESPACE
@@ -29,6 +30,7 @@ kubectl create configmap grafana-config \
 
 # Grafana
 kubectl apply -f $DIR/monitoring/grafana.yaml -n $NAMESPACE
+kubectl expose service/grafana -n $NAMESPACE
 
 echo "Waiting for Grafana server to be ready..."
 kubectl rollout status deployment/grafana -w -n $NAMESPACE
