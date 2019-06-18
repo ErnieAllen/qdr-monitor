@@ -27,7 +27,6 @@ kubectl create configmap grafana-config \
     --from-file=interconnect-dashboard-delayed.json=$DIR/monitoring/dashboards/interconnect-delayed.json \
     -n $NAMESPACE
 
-
 # Grafana
 kubectl apply -f $DIR/monitoring/grafana.yaml -n $NAMESPACE
 kubectl expose service/grafana -n $NAMESPACE
